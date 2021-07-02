@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1.0">
+        <title>Test Ajax Services and Promise</title>
+        <style>
+            .body { margin: auto; }
+            div {
+                border: 1px solid black;
+                background-color: cadetblue;
+                padding: 50px;
+                width: 80;
+                font-size: xx-large;
+                margin-top: 50px;
+            }
+        </style>
+        <script src="../services/http_services.js"></script>
+    </head>
+    <body>
+        <h1>The Test Series Results</h1>
+        <div id="get_services"></div>
+        <div id="delete_services"></div>
+        <div id="post_services"></div>
+        <script>
+            const getElen = document.querySelector("get_services");
+            const getURL = "http://127.0.0.1:3000/employees/1";
+            makePromiseCall("Get", getURL,true)
+            .then(responseText => {
+                getElen.textContent = "Get User Data: "+responsiveText;
+            });
+            const deleteElem = document.querySelector("#delete_services");
+            const deleteURL = "http://127.0.0.1:3000/employees/4";
+            makePromiseCall("DELETE", deleteURL,false)
+            .then(responsiveText => {
+                deleteElem.textContent = "DeleteData: "+responsiveText;
+
+            })
+            .catcherror => {
+                getElem.textContent = "Delete Error Status: "+JSON.stringify(error);
+
+            });
+            const postElem = document.querySelector("post_services");
+            const postURL = "http://127.0.0.1:3000/employees";
+            const empData = ("name":"Harry","salary": "5000");
+            makePromiseCall("post",postURL,true,emplData)
+            .then(responsiveText => {
+                postelem.textContent = "New User Data: "+responsiveText;
+
+            })
+            .catcherror => {
+                postElem.textContent = "POST Error Status: "+JSON.stringify(error); 
+            });
+        </script>
+    </body>
+</html>
+
+{
+    "employees": []
+}
+"id": 1,
+"name": "pankaj"
+"salary": "10000"
+},
+{
+    "id":2,
+    "name":"Lisa",
+    "salary": "8000"
+
+}
+{
+    "name":"Terisa"
+    "salary": "10000",
+    "id": 3
+}
+{
+    "name": "Harry",
+    "salary": "5000",
+    "id": 4
+}
+]
+}
